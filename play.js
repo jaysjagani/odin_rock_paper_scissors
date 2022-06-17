@@ -34,6 +34,21 @@ function playRound(playerSelection, computerSelection) {
     return `You Tied! ${computerSelection} equals ${playerSelection}`;
 }
 
-const playerSelection = "roCk";
-var computerSelection = computerPlay();
-console.log(playRound(playerSelection,computerSelection));
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    for(i  = 0; i < 5; i++) {
+        let playerSelection = prompt("Choose Your Weapon");
+        let computerSelection = computerPlay();
+        let result = playRound(playerSelection, computerSelection);
+        console.log(result);
+        if(result.includes("Win")) {playerScore++}
+        if(result.includes("Lose")){computerScore++}
+    }
+    if(playerScore > computerScore){console.log(`You win ${playerScore} to ${computerScore}`)}
+    else if(computerScore > playerScore){console.log(`You lose ${computerScore} to ${playerScore}`)}
+    else {console.log(`You tied ${computerScore} to ${playerScore}`)}
+}
+
+game();
